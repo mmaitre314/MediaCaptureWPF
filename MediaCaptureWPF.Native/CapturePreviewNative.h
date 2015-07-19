@@ -17,10 +17,6 @@ namespace MediaCaptureWPF { namespace Native
         // Finalizer (GC's non-deterministic destruction)
         !CapturePreviewNative();
 
-        property System::Windows::Interop::D3DImage^ ImageSource {
-            System::Windows::Interop::D3DImage^ get() { return m_image; }
-        }
-
         property Object^ MediaSink {
             Object^ get() { return m_sink; }
         }
