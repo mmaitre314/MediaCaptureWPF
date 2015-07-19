@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClInclude Include="stdafx.h" />
+    <ClInclude Include="targetver.h" />
+    <ClInclude Include="MediaSink.h" />
+    <ClInclude Include="MediaStreamSink.h" />
+    <ClInclude Include="DebuggerLogger.h" />
+    <ClInclude Include="MediaTypeFormatter.h" />
+    <ClInclude Include="VideoSinkFactory.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="stdafx.cpp" />
+    <ClCompile Include="MediaStreamSink.cpp" />
+    <ClCompile Include="DebuggerLogger.cpp" />
+    <ClCompile Include="MediaTypeFormatter.cpp" />
+    <ClCompile Include="VideoSinkFactory.cpp" />
+  </ItemGroup>
+</Project>
