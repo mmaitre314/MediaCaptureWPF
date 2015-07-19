@@ -1,5 +1,20 @@
 [![Build status](https://ci.appveyor.com/api/projects/status/e8oe4ihb3f4it8k5?svg=true)](https://ci.appveyor.com/project/mmaitre314/mediacapturewpf)
 
+```XML
+<Grid>
+    <Image Name="Preview"/>
+</Grid>
+```
+
+```C#
+var capture = new MediaCapture();
+await capture.InitializeAsync();
+
+var preview = new CapturePreview(capture);
+Preview.Source = preview;
+await preview.StartAsync();
+```
+
 # References
 
 - CodeProject: [Introduction to D3DImage](http://www.codeproject.com/Articles/28526/Introduction-to-D-DImage)
