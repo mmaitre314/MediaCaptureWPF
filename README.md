@@ -1,4 +1,4 @@
-# MediaCaptureWPF
+[![Build status](https://ci.appveyor.com/api/projects/status/e8oe4ihb3f4it8k5?svg=true)](https://ci.appveyor.com/project/mmaitre314/mediacapturewpf)
 
 # References
 
