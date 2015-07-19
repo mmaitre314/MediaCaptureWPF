@@ -1,10 +1,18 @@
 [![Build status](https://ci.appveyor.com/api/projects/status/e8oe4ihb3f4it8k5?svg=true)](https://ci.appveyor.com/project/mmaitre314/mediacapturewpf)
 
+`CameraPreview` allows previewing the camera video stream of the WinRT [MediaCapture](https://msdn.microsoft.com/en-us/library/windows/apps/windows.media.capture.mediacapture.aspx) API in Desktop WPF apps.
+
+![Preview](http://mmaitre314.github.io/images/WPFCameraPreview.jpg)
+
+`CameraPreview` derives from [D3DImage](https://msdn.microsoft.com/en-us/library/system.windows.interop.d3dimage(v=vs.110).aspx) and can be used anywhere a GPU-accelerated [ImageSource](https://msdn.microsoft.com/en-us/library/system.windows.media.imagesource(v=vs.110).aspx) can be. For instance, inside an `<Image>` XAML element:
+
 ```XML
 <Grid>
     <Image Name="Preview"/>
 </Grid>
 ```
+
+The C# code behind creates `MediaCapture`, initializes it, and passes it to `CameraPreview`. This object is then set as source of the `<Image>` element and preview is started.
 
 ```C#
 var capture = new MediaCapture();
