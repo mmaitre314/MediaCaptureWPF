@@ -4,18 +4,18 @@ using namespace System;
 
 class CapturePreviewNativeState;
 
-namespace MediaCaptureWPF
+namespace MediaCaptureWPF { namespace Native
 {
-    public ref class CapturePreview
+    public ref class CapturePreviewNative
     {
     public:
-        CapturePreview(unsigned int width, unsigned int height);
+        CapturePreviewNative(_In_ System::Windows::Interop::D3DImage^ image, unsigned int width, unsigned int height);
 
         // IDisposable::Dispose()
-        ~CapturePreview();
+        ~CapturePreviewNative();
 
         // Finalizer (GC's non-deterministic destruction)
-        !CapturePreview();
+        !CapturePreviewNative();
 
         property System::Windows::Interop::D3DImage^ ImageSource {
             System::Windows::Interop::D3DImage^ get() { return m_image; }
@@ -40,4 +40,4 @@ namespace MediaCaptureWPF
         Object^ m_sink;
         CapturePreviewNativeState* m_state;
     };
-}
+} }

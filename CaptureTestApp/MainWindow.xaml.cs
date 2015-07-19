@@ -44,19 +44,11 @@ namespace CaptureTestApp
                     StreamingCaptureMode = StreamingCaptureMode.Video // No audio
                 });
 
-            // TODO: move to C# assembly, rename MediaCaptureWPF -> MediaCaptureWPFNative
-            var props = (VideoEncodingProperties)capture.VideoDeviceController.GetMediaStreamProperties(MediaStreamType.VideoPreview);
-            var profile = new MediaEncodingProfile
-            {
-                Audio = null,
-                Video = VideoEncodingProperties.CreateUncompressed(MediaEncodingSubtypes.Rgb32, props.Width, props.Height),
-                Container = null
-            };
 
-            var preview = new CapturePreview(props.Width, props.Height);
-            Preview.Source = preview.ImageSource;
+            var preview = new CapturePreview(capture);
+            Preview.Source = preview;
 
-            await capture.StartPreviewToCustomSinkAsync(profile, (IMediaExtension)preview.MediaSink);
+            await preview.StartAsync();
         }
     }
 }

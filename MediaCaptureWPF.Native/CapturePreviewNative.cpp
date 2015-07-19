@@ -1,33 +1,38 @@
 #include "stdafx.h"
 #include "SampleCallback.h"
 #include "CapturePreviewNativeState.h"
-#include "CapturePreview.h"
+#include "CapturePreviewNative.h"
 
-using namespace MediaCaptureWPF;
+using namespace MediaCaptureWPF::Native;
 using namespace msclr;
 using namespace System::Runtime::InteropServices;
 using namespace System::Windows;
 using namespace System::Windows::Interop;
 using namespace System::Windows::Threading;
 
-CapturePreview::CapturePreview(unsigned int width, unsigned int height)
+CapturePreviewNative::CapturePreviewNative(_In_ D3DImage^ image, unsigned int width, unsigned int height)
     : m_width(width)
     , m_height(height)
     , m_imageInitialized(false)
-    , m_image(gcnew D3DImage())
+    , m_image(image)
     , m_state(nullptr)
 {
-    Trace("CapturePreview::CapturePreview@ creating the video sink");
+    Trace("CapturePreviewNative::CapturePreview@ creating the video sink");
+
+    if (image == nullptr)
+    {
+        throw gcnew ArgumentNullException(L"image");
+    }
 
     CComPtr<IMFMediaSink> sink;
     CreateVideoSink(
         width, 
         height,
-        SampleCallback<CapturePreview>(this),
+        SampleCallback<CapturePreviewNative>(this),
         &sink
         );
 
-    Trace("CapturePreview::CapturePreview@ wrapping the native sink in managed object");
+    Trace("CapturePreviewNative::CapturePreview@ wrapping the native sink in managed object");
 
     m_sink = Marshal::GetObjectForIUnknown(IntPtr(sink.p));
 
@@ -35,10 +40,10 @@ CapturePreview::CapturePreview(unsigned int width, unsigned int height)
 }
 
 // IDisposable::Dispose()
-CapturePreview::~CapturePreview()
+CapturePreviewNative::~CapturePreviewNative()
 {
     lock lock(this);
-    Trace("CapturePreview::~CapturePreview@ disposing CapturePreview");
+    Trace("CapturePreviewNative::~CapturePreview@ disposing CapturePreview");
 
     if (m_image != nullptr)
     {
@@ -49,12 +54,12 @@ CapturePreview::~CapturePreview()
         m_imageInitialized = false;
     }
 
-    this->!CapturePreview();
+    this->!CapturePreviewNative();
 }
 
-CapturePreview::!CapturePreview()
+CapturePreviewNative::!CapturePreviewNative()
 {
-    Trace("CapturePreview::!CapturePreview@ finalizing CapturePreview");
+    Trace("CapturePreviewNative::!CapturePreview@ finalizing CapturePreview");
 
     if (m_state != nullptr)
     {
@@ -64,7 +69,7 @@ CapturePreview::!CapturePreview()
     }
 }
 
-void CapturePreview::OnSample(_In_ IMFSample* sample)
+void CapturePreviewNative::OnSample(_In_ IMFSample* sample)
 {
     Dispatcher^ dispatcher;
     {
@@ -83,10 +88,10 @@ void CapturePreview::OnSample(_In_ IMFSample* sample)
     }
 
     // Go back to the UI thread
-    dispatcher->BeginInvoke(gcnew RefreshPreviewDelegate(this, &CapturePreview::RefreshPreview));
+    dispatcher->BeginInvoke(gcnew RefreshPreviewDelegate(this, &CapturePreviewNative::RefreshPreview));
 }
 
-void CapturePreview::RefreshPreview()
+void CapturePreviewNative::RefreshPreview()
 {
     lock lock(this);
 
@@ -98,7 +103,7 @@ void CapturePreview::RefreshPreview()
     {
         if (m_imageInitialized)
         {
-            Trace("CapturePreview::RefreshPreview@ setting back buffer on D3DImage");
+            Trace("CapturePreviewNative::RefreshPreview@ setting back buffer on D3DImage");
 
             m_image->Lock();
             m_image->SetBackBuffer(D3DResourceType::IDirect3DSurface9, IntPtr::Zero);
@@ -137,7 +142,7 @@ void CapturePreview::RefreshPreview()
     CComPtr<ID3D11Resource> outputD3dResource;
     CHK(inputD3dDevice->OpenSharedResource(m_state->m_d3d9SharedTextureHandle, IID_PPV_ARGS(&outputD3dResource)));
 
-    Trace("CapturePreview::RefreshPreview@ copying DX texture to D3DImage");
+    Trace("CapturePreviewNative::RefreshPreview@ copying DX texture to D3DImage");
 
     CComPtr<ID3D11DeviceContext> inputD3dContext;
     inputD3dDevice->GetImmediateContext(&inputD3dContext);
