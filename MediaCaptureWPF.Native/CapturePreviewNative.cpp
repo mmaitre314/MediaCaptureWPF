@@ -152,10 +152,4 @@ void CapturePreviewNative::RefreshPreview()
     m_image->Unlock();
 
     m_state->m_sample = nullptr;
-
-    // TODO: add tests
-    // TODO: add NuGet
-    // TODO: add AppVeyor
-    // TODO: add GitHub doc
-    // TODO: StackOverflow, twitter
 }
