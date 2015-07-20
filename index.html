@@ -1,0 +1,89 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Mediacapturewpf by mmaitre314</title>
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/github-dark.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script src="javascripts/respond.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <!--[if lt IE 8]>
+    <link rel="stylesheet" href="stylesheets/ie.css">
+    <![endif]-->
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+
+  </head>
+  <body>
+      <div id="header">
+        <nav>
+          <li class="fork"><a href="https://github.com/mmaitre314/MediaCaptureWPF">View On GitHub</a></li>
+          <li class="downloads"><a href="https://github.com/mmaitre314/MediaCaptureWPF/zipball/master">ZIP</a></li>
+          <li class="downloads"><a href="https://github.com/mmaitre314/MediaCaptureWPF/tarball/master">TAR</a></li>
+          <li class="title">DOWNLOADS</li>
+        </nav>
+      </div><!-- end header -->
+
+    <div class="wrapper">
+
+      <section>
+        <div id="title">
+          <h1>Mediacapturewpf</h1>
+          <p>Camera preview in WPF Desktop apps using WinRT MediaCapture</p>
+          <hr>
+          <span class="credits left">Project maintained by <a href="https://github.com/mmaitre314">mmaitre314</a></span>
+          <span class="credits right">Hosted on GitHub Pages &mdash; Theme by <a href="https://twitter.com/michigangraham">mattgraham</a></span>
+        </div>
+
+        <p><a href="https://ci.appveyor.com/project/mmaitre314/mediacapturewpf"><img src="https://ci.appveyor.com/api/projects/status/e8oe4ihb3f4it8k5?svg=true" alt="Build status"></a>
+<a href="https://www.nuget.org/packages/MMaitre.MediaCaptureWPF/"><img src="http://mmaitre314.github.io/images/nuget.png" alt="NuGet package"></a>
+<a href="http://mmaitre314.github.io/2015/05/24/personal-pdb-symbol-server.html"><img src="http://mmaitre314.github.io/images/Symbols.png" alt="Symbols"></a></p>
+
+<p><code>CameraPreview</code> allows previewing the camera video stream of the WinRT <a href="https://msdn.microsoft.com/en-us/library/windows/apps/windows.media.capture.mediacapture.aspx">MediaCapture</a> API in Desktop WPF apps.</p>
+
+<p><img src="http://mmaitre314.github.io/images/WPFCameraPreview.jpg" alt="Preview"></p>
+
+<p><code>CameraPreview</code> derives from <a href="https://msdn.microsoft.com/en-us/library/system.windows.interop.d3dimage(v=vs.110).aspx">D3DImage</a> and can be used anywhere a GPU-accelerated <a href="https://msdn.microsoft.com/en-us/library/system.windows.media.imagesource(v=vs.110).aspx">ImageSource</a> can be. For instance, inside an <code>&lt;Image&gt;</code> XAML element:</p>
+
+<div class="highlight highlight-XML"><pre>&lt;<span class="pl-ent">Grid</span>&gt;
+    &lt;<span class="pl-ent">Image</span> <span class="pl-e">Name</span>=<span class="pl-s"><span class="pl-pds">"</span>Preview<span class="pl-pds">"</span></span>/&gt;
+&lt;/<span class="pl-ent">Grid</span>&gt;</pre></div>
+
+<p>The C# code behind creates <code>MediaCapture</code>, initializes it, and passes it to <code>CameraPreview</code>. This object is then set as source of the <code>&lt;Image&gt;</code> element and preview is started.</p>
+
+<div class="highlight highlight-C#"><pre><span class="pl-k">var</span> capture = <span class="pl-k">new</span> MediaCapture();
+<span class="pl-k">await</span> capture.InitializeAsync();
+
+<span class="pl-k">var</span> preview = <span class="pl-k">new</span> CapturePreview(capture);
+Preview.Source = preview;
+<span class="pl-k">await</span> preview.StartAsync();</pre></div>
+
+<h1>
+<a id="references" class="anchor" href="#references" aria-hidden="true"><span class="octicon octicon-link"></span></a>References</h1>
+
+<ul>
+<li>CodeProject: <a href="http://www.codeproject.com/Articles/28526/Introduction-to-D-DImage">Introduction to D3DImage</a>
+</li>
+<li>MSDN: <a href="https://msdn.microsoft.com/en-us/library/system.windows.interop.d3dimage(v=vs.110).aspx">D3DImage</a>
+</li>
+<li>GitHub: <a href="https://github.com/Microsoft/Windows-universal-samples/tree/master/CameraStarterKit">Camera Starter Kit</a>
+</li>
+<li>Blogs: 
+
+<ul>
+<li><a href="http://jmorrill.hjtcentral.com/Home/tabid/428/EntryId/437/Direct3D-10-11-Direct2D-in-WPF.aspx">Direct3D 10/11 &amp; Direct2D in WPF</a></li>
+<li><a href="http://manski.net/2011/04/cpp-cli-cheat-sheet/">C++/CLI Cheat Sheet</a></li>
+<li><a href="http://mmaitre314.github.io/2015/02/01/using-the-winrt-media-apis-to-encode-audio-in-desktop-cs-apps.html">Media WinRT APIs in Desktop apps</a></li>
+</ul>
+</li>
+</ul>
+      </section>
+
+    </div>
+    <!--[if !IE]><script>fixScale(document);</script><![endif]-->
+    
+  </body>
+</html>
