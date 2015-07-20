@@ -1,4 +1,7 @@
 [![Build status](https://ci.appveyor.com/api/projects/status/e8oe4ihb3f4it8k5?svg=true)](https://ci.appveyor.com/project/mmaitre314/mediacapturewpf)
+[![NuGet package](http://mmaitre314.github.io/images/nuget.png)](https://www.nuget.org/packages/MMaitre.MediaCaptureWPF/)
+[![Symbols](http://mmaitre314.github.io/images/Symbols.png)](http://mmaitre314.github.io/2015/05/24/personal-pdb-symbol-server.html)
+
 
 `CameraPreview` allows previewing the camera video stream of the WinRT [MediaCapture](https://msdn.microsoft.com/en-us/library/windows/apps/windows.media.capture.mediacapture.aspx) API in Desktop WPF apps.
 
