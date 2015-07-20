@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
+  <metadata>
+    <id>MMaitre.MediaCaptureWPF.Symbols</id>
+    <title>MediaCapture WPF Symbols</title>
+    <version>$NuGetVersion$</version>
+    <authors>Matthieu Maitre</authors>
+    <owners>Matthieu Maitre</owners>
+    <licenseUrl>https://raw.githubusercontent.com/mmaitre314/MediaCaptureWPF/master/LICENSE</licenseUrl>
+    <projectUrl>https://github.com/mmaitre314/MediaCaptureWPF</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>Camera preview in WPF Desktop apps using WinRT MediaCapture.</description>
+    <copyright>Copyright © 2015, Matthieu Maitre. All rights reserved.</copyright>
+    <tags>MediaCapture CaptureElement WinRT WPF video preview camera webcam</tags>
+  </metadata>
+  <files>
+
+    <!-- symbols -->
+    <file src="..\MediaCaptureWPF\bin\x86\Release\MediaCaptureWPF.pdb" target="build\net451\x86\" />
+    <file src="..\MediaCaptureWPF\bin\x86\Release\MediaCaptureWPF.Native.pdb" target="build\net451\x86\" />
+    <file src="..\MediaCaptureWPF\bin\x64\Release\MediaCaptureWPF.pdb" target="build\net451\x64\" />
+    <file src="..\MediaCaptureWPF\bin\x64\Release\MediaCaptureWPF.Native.pdb" target="build\net451\x64\" />
+
+    <!-- source -->
+    <file src="..\**\*.cpp" target="src\" />
+    <file src="..\**\*.h"   target="src\" />
+    <file src="..\**\*.cs"  target="src\" />
+    
+  </files>
+</package>

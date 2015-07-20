@@ -10,6 +10,15 @@
       <Platform>Win32</Platform>
     </ProjectConfiguration>
   </ItemGroup>
+  <ItemGroup>
+    <None Include="clean.cmd" />
+    <None Include="MMaitre.MediaCaptureWPF.nuspec" />
+    <None Include="MMaitre.MediaCaptureWPF.Symbols.nuspec" />
+    <None Include="MMaitre.MediaCaptureWPF.targets" />
+    <None Include="pack.cmd" />
+    <None Include="Pack.sln" />
+    <None Include="publish.ps1" />
+  </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{6AB93DB9-14FB-467F-9C36-9F38375C2C3D}</ProjectGuid>
     <Keyword>MakeFileProj</Keyword>
@@ -36,12 +45,20 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <NMakeOutput>Package.exe</NMakeOutput>
+    <NMakeOutput>
+    </NMakeOutput>
     <NMakePreprocessorDefinitions>WIN32;_DEBUG;$(NMakePreprocessorDefinitions)</NMakePreprocessorDefinitions>
+    <NMakeBuildCommandLine>pack.cmd</NMakeBuildCommandLine>
+    <NMakeReBuildCommandLine>pack.cmd</NMakeReBuildCommandLine>
+    <NMakeCleanCommandLine>clean.cmd</NMakeCleanCommandLine>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
-    <NMakeOutput>Package.exe</NMakeOutput>
+    <NMakeOutput>
+    </NMakeOutput>
     <NMakePreprocessorDefinitions>WIN32;NDEBUG;$(NMakePreprocessorDefinitions)</NMakePreprocessorDefinitions>
+    <NMakeBuildCommandLine>pack.cmd</NMakeBuildCommandLine>
+    <NMakeReBuildCommandLine>pack.cmd</NMakeReBuildCommandLine>
+    <NMakeCleanCommandLine>clean.cmd</NMakeCleanCommandLine>
   </PropertyGroup>
   <ItemDefinitionGroup>
   </ItemDefinitionGroup>

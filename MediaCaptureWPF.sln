@@ -15,6 +15,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "UnitTestsCx", "UnitTestsCx\
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Package", "Package\Package.vcxproj", "{6AB93DB9-14FB-467F-9C36-9F38375C2C3D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CaptureTestApp.NuGet", "CaptureTestApp.NuGet\CaptureTestApp.NuGet.csproj", "{0720B3CF-AF67-4F7B-843D-2867A35C142F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -68,6 +70,14 @@ Global
 		{6AB93DB9-14FB-467F-9C36-9F38375C2C3D}.Release|x64.ActiveCfg = Release|Win32
 		{6AB93DB9-14FB-467F-9C36-9F38375C2C3D}.Release|x86.ActiveCfg = Release|Win32
 		{6AB93DB9-14FB-467F-9C36-9F38375C2C3D}.Release|x86.Build.0 = Release|Win32
+		{0720B3CF-AF67-4F7B-843D-2867A35C142F}.Debug|x64.ActiveCfg = Debug|x64
+		{0720B3CF-AF67-4F7B-843D-2867A35C142F}.Debug|x64.Build.0 = Debug|x64
+		{0720B3CF-AF67-4F7B-843D-2867A35C142F}.Debug|x86.ActiveCfg = Debug|x64
+		{0720B3CF-AF67-4F7B-843D-2867A35C142F}.Debug|x86.Build.0 = Debug|x64
+		{0720B3CF-AF67-4F7B-843D-2867A35C142F}.Release|x64.ActiveCfg = Release|x64
+		{0720B3CF-AF67-4F7B-843D-2867A35C142F}.Release|x64.Build.0 = Release|x64
+		{0720B3CF-AF67-4F7B-843D-2867A35C142F}.Release|x86.ActiveCfg = Release|x86
+		{0720B3CF-AF67-4F7B-843D-2867A35C142F}.Release|x86.Build.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -1,0 +1,13 @@
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Target Name="CheckAnyCPU" Condition="('$(PlatformTarget)' != 'x86') AND ('$(PlatformTarget)' != 'x64')" BeforeTargets="PrepareForBuild">
+    <Error Text="The $(Platform) target platform is not supported." />
+  </Target>
+  <ItemGroup>
+    <Reference Include="MMaitre.MediaCaptureWPF">
+      <HintPath>$(MSBuildThisFileDirectory)\..\net451\$(PlatformTarget)\MediaCaptureWPF.dll</HintPath>
+    </Reference>
+    <Reference Include="MMaitre.MediaCaptureWPF.Native">
+      <HintPath>$(MSBuildThisFileDirectory)\..\net451\$(PlatformTarget)\MediaCaptureWPF.Native.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+</Project>
