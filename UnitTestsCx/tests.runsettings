@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- File name extension must be .runsettings -->
+<RunSettings>
+  <DataCollectionRunSettings>
+    <DataCollectors>
+      <DataCollector friendlyName="Code Coverage" uri="datacollector://Microsoft/CodeCoverage/2.0" assemblyQualifiedName="Microsoft.VisualStudio.Coverage.DynamicCoverageDataCollector, Microsoft.VisualStudio.TraceCollector, Version=11.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+        <Configuration>
+          <CodeCoverage>
+
+            <ModulePaths>
+              <Exclude>
+                <ModulePath>.*test.*</ModulePath>
+              </Exclude>
+            </ModulePaths>
+            
+            <Functions>
+              <Exclude>
+                <Function>^std::.*</Function>
+                <Function>^ATL::.*</Function>
+                <Function>^Microsoft::WRL::.*</Function>
+                <Function>.*ExceptionBoundary.*</Function>
+              </Exclude>
+            </Functions>
+
+            <Sources>
+              <Exclude>
+                <Source>.*\\atlmfc\\.*</Source>
+                <Source>.*\\vctools\\.*</Source>
+                <Source>.*\\public\\sdk\\.*</Source>
+                <Source>.*\\microsoft sdks\\.*</Source>
+                <Source>.*\\vc\\include\\.*</Source>
+                <Source>.*\\wrl\\.*</Source>
+              </Exclude>
+            </Sources>
+            
+          </CodeCoverage>
+        </Configuration>
+      </DataCollector>
+    </DataCollectors>
+  </DataCollectionRunSettings>
+</RunSettings>

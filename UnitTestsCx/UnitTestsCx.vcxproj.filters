@@ -15,4 +15,7 @@
   <ItemGroup>
     <ResourceCompile Include="app.rc" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="tests.runsettings" />
+  </ItemGroup>
 </Project>
