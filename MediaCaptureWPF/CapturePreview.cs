@@ -40,5 +40,10 @@ namespace MediaCaptureWPF
 
             await m_capture.StartPreviewToCustomSinkAsync(profile, (IMediaExtension)m_preview.MediaSink);
         }
+
+        public async Task StopAsync()
+        {
+            await m_capture.StopPreviewAsync();
+        }
     }
 }
