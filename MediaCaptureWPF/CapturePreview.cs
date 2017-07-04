@@ -12,7 +12,7 @@ using Windows.Media.MediaProperties;
 
 namespace MediaCaptureWPF
 {
-    public class CapturePreview : D3DImage
+    public class CapturePreview : D3DImage, IDisposable
     {
         CapturePreviewNative m_preview;
         MediaCapture m_capture;
@@ -44,6 +44,11 @@ namespace MediaCaptureWPF
         public async Task StopAsync()
         {
             await m_capture.StopPreviewAsync();
+        }
+
+        public void Dispose()
+        {
+            m_capture.Dispose();
         }
     }
 }
